@@ -1,16 +1,23 @@
 import {Component} from '@angular/core';
+import {Item, ItemService} from '../../services/item-service';
 
 @Component({
     selector: 'shopping-list-application',
-    templateUrl: `app/app.html`
+    templateUrl: `app/components/application/app.html`
 })
 export class ShoppingListApplicationComponent {
+    items: Array<Item> = []; // <1>
+    
     nbDishes=0;
     dishes: string;
     textStyle: string;
     msg:string;
-    constructor() {
-        
+    constructor(private itemService: ItemService) { // <2>
+        this.items = this.itemService.getItems();
+
+        for(var item in this.items){
+            console.log(this.items[item].name);
+        }
     }
 
     public countDishes() {
