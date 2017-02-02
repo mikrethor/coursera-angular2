@@ -13,9 +13,24 @@ export class Item {
 }
 
 export class ItemService {
+  boughtList: Array<Item> = [];
+  toBuyList: Array<Item> = this.getItems();
   getItems(): Array<Item> {
     return items.map(p => new Item(p.name, p.quantity));
   }
+
+  getBoughtItems(): Array<Item> {
+    return this.boughtList;
+  }
+
+  getToBuyItems(): Array<Item> {
+    return this.toBuyList;
+  }
+
+  buyItem(index:number) {
+    this.boughtList.push(this.toBuyList[index]);
+    this.toBuyList.splice(index, 1);
+  };
 }
 
 var items = [

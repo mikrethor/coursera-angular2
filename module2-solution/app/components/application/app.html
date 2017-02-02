@@ -1,17 +1,29 @@
 <div class="container">
-     <h1>Shopping List</h1>
+  <h1>Shopping List Check Off</h1>
 
-         <div class="form-group">
-             <input id="dishes" type="text"  [(ngModel)]="dishes"
-             placeholder="list comma separated dishes you usually have for lunch"
-             class="form-control">
-         </div>
-         <div class="form-group">
-             <button class="btn btn-default" (click)="countDishes();">Check If Too Much</button>
-         </div>
-         <div class="form-group message">
-           <div class="{{textStyle}}">
-             {{msg}}
-           </div>
-         </div>
-   </div>
+  <div class="row">
+
+    <!-- To Buy List -->
+    <div class="col-md-6">
+     <h2>To Buy:</h2>
+     <ul>
+       <li *ngFor='let item of toBuyList ; let i = index' >
+             {{item.quantity }} of {{item.name }}
+               <button class="btn btn-default" (click)="buyItem(i);"><span class="glyphicon glyphicon-ok"></span> Bought</button>
+       </li>
+     </ul>
+     <div class="emptyMessage" *ngIf="toBuyList.length == 0">Everything is bought!</div>
+    </div>
+
+    <!-- Already Bought List -->
+    <div class="col-md-6">
+     <h2>Already Bought:</h2>
+     <ul>
+       <li *ngFor='let item of boughtList'>
+            Bought {{item.quantity }} of {{item.name }}
+       </li>
+     </ul>
+     <div class="emptyMessage" *ngIf="boughtList.length == 0">Nothing bought yet.</div>
+    </div>
+  </div>
+</div>
