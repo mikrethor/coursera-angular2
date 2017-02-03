@@ -1,0 +1,35 @@
+<div class="container">
+    <h1>Narrow Down Your Chinese Menu Choice</h1>
+    <div class="form-group">
+      <input type="text" placeholder="search term" class="form-control" [(ngModel)]="searchTerm">
+    </div>
+    <div class="form-group narrow-button">
+      <button class="btn btn-primary" (click)="narrowItDown()">Narrow It Down For Me!</button>
+    </div>
+
+    <!-- found-items should be implemented as a component -->
+
+
+   <found-items [(menuItems)]='menuItems'></found-items>
+tests
+   
+
+  <div class="row">
+
+    
+    <div class="col-md-6">
+     <ul>
+      <li  *ngFor="let item of menuItems; let i = index">{{item.id}}{{item.description}}</li>
+     </ul>
+    </div>
+  </div>
+  </div>
+
+
+
+
+
+
+
+
+
