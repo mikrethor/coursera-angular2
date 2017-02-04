@@ -11,12 +11,6 @@ export class MenuSearchService {
   constructor(private http: Http, private jsonp: Jsonp, private constantService: ConstantsService) {
   }
 
-  getMenuItemsJson() {
-    return this.http.get(this.constantService.API_ENDPOINT + "/menu_items.json")
-
-
-  }
-
   getMatchedMenuItems(searchTerm: string): MenuItem[] {
     var elements: MenuItem[] = [];
     this.http.get(this.constantService.API_ENDPOINT + "/menu_items.json")
