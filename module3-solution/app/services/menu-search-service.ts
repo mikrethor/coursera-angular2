@@ -11,38 +11,12 @@ export class MenuSearchService {
   constructor(private http: Http, private jsonp: Jsonp, private constantService: ConstantsService) {
   }
 
-  getMatchedMenuItems(searchTerm: string): MenuItem[] {
-    var elements: MenuItem[] = [];
-    this.http.get(this.constantService.API_ENDPOINT + "/menu_items.json")
+  getMatchedMenuItems(searchTerm: string): Observable<Array> {
+
+    return this.http.get(this.constantService.API_ENDPOINT + "/menu_items.json")
       .flatMap((response) => response.json()['menu_items'])
       .filter((menu_item) => menu_item.description.toLowerCase().indexOf(searchTerm) !== -1)
-
-      .subscribe(
-
-      (menu_item) => {
-        console.log(menu_item);
-        elements.push(new MenuItem(
-          menu_item.id,
-          menu_item.short_name,
-          menu_item.name,
-          menu_item.description,
-          menu_item.price_small,
-          menu_item.price_large,
-          menu_item.small_portion_name,
-          menu_item.large_portion_name));
-      }
-
-      ,
-      function (error) { console.log("Error happened" + error) },
-      function () { console.log("the subscription is completed") }
-      );
-
-    console.log("el :" + elements);
-    return elements;
-
   }
-
-
 }
 export class MenuItem {
   constructor(
