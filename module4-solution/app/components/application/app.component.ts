@@ -4,7 +4,7 @@ import {Observable} from 'rxjs/Rx';
 import { CategoriesComponent }  from '../../components/categories/categories.component';
 
 @Component({
-    selector: 'narrow-application',
+    selector: 'restaurant-application',
     templateUrl: `app/components/application/app.html`,
 })
 export class NarrowItDownComponent {

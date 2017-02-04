@@ -21,7 +21,6 @@ export class CategoriesComponent {
             .subscribe(
 
             (category) => {
-                //   console.log(menu_item);
                 this.items.push(new Category(
                     category.id,
                     category.short_name,

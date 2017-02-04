@@ -22,7 +22,6 @@ export class ItemsComponent {
             .subscribe(
 
             (menu_item) => {
-                //   console.log(menu_item);
                 this.items.push(new MenuItem(
                     menu_item.id,
                     menu_item.short_name,
@@ -41,8 +40,6 @@ export class ItemsComponent {
     }
 
     ngOnChanges(...args: any[]) {
-        console.log('changing', args);
-        console.log(this.cat);
         if (this.cat != undefined) {
             this.getItemsForCategory(this.cat.short_name);
         }
