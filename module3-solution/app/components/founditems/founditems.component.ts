@@ -1,4 +1,4 @@
-import {Component,Input,Output,AfterViewInit, ViewChild,ChangeDetectionStrategy,EventEmitter } from '@angular/core';
+import {Component,Input,Output,AfterViewInit, ViewChild,ChangeDetectionStrategy,EventEmitter,ViewEncapsulation } from '@angular/core';
 import {MenuSearchService,MenuItem} from '../../services/menu-search-service';
 import {Observable} from 'rxjs/Rx';
 import { NarrowItDownComponent }  from '../../components/application/app.component';
@@ -7,45 +7,34 @@ import { NarrowItDownComponent }  from '../../components/application/app.compone
     selector: 'found-items',
     templateUrl: `app/components/founditems/founditems.html`,
  })
-export class FoundItemsComponent {
-    @Input() menuItems:MenuItem[];
-    @Input() test:string;
-
-
- //@Output() selectedItemChange: EventEmitter<MenuItem[]> = new EventEmitter<MenuItem[]>();
-
-// @Input() set foundItems(foundItems: MenuItem[]) {
-//     this.foundItems = foundItems;
-//     this.selectedItemChange.emit(foundItems); 
-// }
+export class FoundItemsComponent  {
+   @Input('item') private  item:MenuItem;
+   @Input('position') private  position:number;
 
     constructor() { 
-        console.log("foundItems"+this.menuItems);
-        console.log("foundItems"+this.test);
     }
 
-    public empty(){
-       return true;  
-    }
-    
-    ngOnInit() {
-        console.log("init"+this.menuItems);
-        console.log("foundItems"+this.test);
-    }
+    // public empty(){
+    //     if(this.foundedItems==undefined || this.foundedItems.length==0){
+    //         console.log("empty"+true);
+    //         return true;  
+    //     }
+    //     console.log("empty"+false);
+    //   return false;
+    // }
 
-    ngOnChanges(...args: any[]) {
-        console.log('onChange fired');
-        console.log('changing', args);
-        console.log("foundItems ch"+this.menuItems);
-        console.log(this.menuItems);
-        console.log("foundItems ch"+this.test);
+    //  ngOnChanges(...args: any[]) {
+    //     console.log('changingChild', args);
+    //     console.log(this.foundedItems);
+    //     console.log('end changingChild', args);
 
-    }
+    // }
 
+    remove() {
+      console.log('remove'+this.position);
 
+        
 
-// get selectedItem(): MenuItem[] {
-//     return this.foundItems; 
-// }
-    
+     }
+
 }
