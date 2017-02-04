@@ -1,0 +1,9 @@
+<div *ngIf="cat"> 
+<h2>Menu in category :   {{cat.short_name}}</h2>
+
+<ul>
+  <li *ngFor="let item of items; let i = index; ">
+    {{ item.id }} {{ item.short_name }} {{ item.name }}
+  </li>
+</ul>
+</div>
