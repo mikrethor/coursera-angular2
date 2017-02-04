@@ -1,2 +1,6 @@
-{{ item.short_name }} : {{ item.name }} : {{ item.description }}
-<button (click)="remove()">Don't want this one!</button>
+<ol>
+   <li *ngFor="let item of items; let i = index; ">
+       {{ item.short_name }} : {{ item.name }} : {{ item.description }}
+      <button (click)="remove(i)">Don't want this one!</button>
+   </li> 
+</ol>

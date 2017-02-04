@@ -8,33 +8,19 @@ import { NarrowItDownComponent }  from '../../components/application/app.compone
     templateUrl: `app/components/founditems/founditems.html`,
  })
 export class FoundItemsComponent  {
-   @Input('item') private  item:MenuItem;
+   @Input('items') private  items:MenuItem[];
    @Input('position') private  position:number;
 
     constructor() { 
     }
 
-    // public empty(){
-    //     if(this.foundedItems==undefined || this.foundedItems.length==0){
-    //         console.log("empty"+true);
-    //         return true;  
-    //     }
-    //     console.log("empty"+false);
-    //   return false;
-    // }
-
-    //  ngOnChanges(...args: any[]) {
-    //     console.log('changingChild', args);
-    //     console.log(this.foundedItems);
-    //     console.log('end changingChild', args);
-
-    // }
-
     remove() {
       console.log('remove'+this.position);
+    }
 
-        
-
-     }
+   ngOnChanges(...args: any[]) {
+        console.log('changing', args);
+        console.log(this.items);
+    }
 
 }
