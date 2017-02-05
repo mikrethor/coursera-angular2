@@ -1,15 +1,17 @@
 import { Component, Output, OnInit, Input } from '@angular/core';
+import { ItemsComponent } from '../../components/founditems/items.component';
 import { MenuSearchService, MenuItem } from '../../services/menu-search-service';
 import { Observable } from 'rxjs/Rx';
-import { FoundItemsComponent } from '../../components/founditems/founditems.component';
 
 @Component({
     selector: 'narrow-application',
-    templateUrl: `app/components/application/app.html`,
+    templateUrl: 'app/components/application/app.html',
 })
 export class NarrowItDownComponent implements OnInit {
-    @Output() menuItems: MenuItem[];
-    @Input() searchTerm: string = "";
+    @Output() private menuItems: MenuItem[];
+    @Output() private searchTerm: string = '';
+    @Output() private show: string = '';
+
     constructor(private menuSearchService: MenuSearchService) {
     }
     public getMatchedMenuItems(searchTerm: string) {
@@ -18,7 +20,6 @@ export class NarrowItDownComponent implements OnInit {
 
     public narrowItDown() {
         console.log("searchTerm:" + this.searchTerm)
-        this.menuItems = [];
         this.callService();
     }
 
@@ -34,6 +35,7 @@ export class NarrowItDownComponent implements OnInit {
 
             (menu_item) => {
                 //   console.log(menu_item);
+
                 this.menuItems.push(new MenuItem(
                     menu_item.id,
                     menu_item.short_name,
@@ -52,7 +54,15 @@ export class NarrowItDownComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.searchTerm = "";
         this.callService();
+    }
+
+    checkSearchTerm() {
+        if (this.searchTerm != undefined) {
+            return true;
+        } 
+        return false;
     }
 
 

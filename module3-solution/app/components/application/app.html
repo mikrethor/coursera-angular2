@@ -1,17 +1,11 @@
 <div class="container">
-    <h1>Narrow Down Your Chinese Menu Choice</h1>
-    <div class="form-group">
-      <input type="text" placeholder="search term" class="form-control" [(ngModel)]="searchTerm">
-    </div>
-    <div class="form-group narrow-button">
-      <button class="btn btn-primary" (click)="narrowItDown()">Narrow It Down For Me!</button>
-    </div>
-<ol>
-   <li *ngFor="let item of menuItems; let i = index; ">
-       {{ item.short_name }} : {{ item.name }} : {{ item.description }}
-      <button (click)="remove(i)">Don't want this one!</button>
-   </li> 
-</ol>
--------------
-<found-items [items]='menuItems'></found-items>
+  <h1>Narrow Down Your Chinese Menu Choice</h1>
+  <div class="form-group">
+    <input type="text" placeholder="search term" class="form-control" [(ngModel)]="searchTerm">
+  </div>
+  <div class="form-group narrow-button">
+    <button class="btn btn-primary" (click)="narrowItDown()">Narrow It Down For Me!</button>
+  </div>
+
+  <items *ngIf="searchTerm" [items]='menuItems'>Loading...</items>
 </div>

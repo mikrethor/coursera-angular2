@@ -1,8 +1,3 @@
-
-{{items}}
-----
-{{menuItems}}
-----
 <div>
     <ol>
         <li *ngFor="let item of items; let i = index; ">
@@ -10,4 +5,5 @@
             <button (click)="remove(i)">Don't want this one!</button>
         </li>
     </ol>
+
 </div>
