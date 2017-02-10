@@ -6,6 +6,8 @@ import { NarrowItDownComponent } from '../../components/application/app.componen
 @Component({
     selector: 'categories',
     templateUrl: `app/components/categories/categories.html`,
+    //styles: ['ul li:hover{  display: inline-block;  cursor: pointer;  border: solid black 1px;  padding-left: 5px;  padding-right: 5px;}'],
+    styleUrls: ['app/components/categories/categories.css']
 })
 export class CategoriesComponent {
     private category: Category;
@@ -36,7 +38,7 @@ export class CategoriesComponent {
     }
 
     pickCategory(index: number) {
-        this.category=this.items[index];
+        this.category = this.items[index];
     }
 
 

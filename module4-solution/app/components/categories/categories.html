@@ -1,6 +1,6 @@
 <h2>Categories</h2>
 <ul>
-  <li *ngFor="let item of items; let i = index; " (click)=pickCategory(i)>
+  <li *ngFor="let item of items; let i = index; " (click)=pickCategory(i) >
     {{ item.id }} {{ item.short_name }} {{ item.name }}
   </li>
 </ul>
