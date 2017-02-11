@@ -1,7 +1,8 @@
-import {Component,Output,OnInit} from '@angular/core';
-import {MenuSearchService,MenuItem} from '../../services/menu-search-service';
-import {Observable} from 'rxjs/Rx';
-import { CategoriesComponent }  from '../../components/categories/categories.component';
+import { Component, Output, OnInit } from '@angular/core';
+import { Router,ActivatedRoute} from '@angular/router';
+import { MenuSearchService, MenuItem } from '../../services/menu-search-service';
+import { Observable } from 'rxjs/Rx';
+import { CategoriesComponent } from '../../components/categories/categories.component';
 
 @Component({
     selector: 'restaurant-application',
@@ -9,11 +10,12 @@ import { CategoriesComponent }  from '../../components/categories/categories.com
 })
 export class NarrowItDownComponent {
 
-    constructor(private menuSearchService: MenuSearchService) { 
+    constructor(private menuSearchService: MenuSearchService, private router: Router, private route: ActivatedRoute,) {
+        //  this.router.navigate([categories], { relativeTo: this.route });
     }
-    public getMatchedMenuItems(searchTerm:string){
-       return this.menuSearchService.getMatchedMenuItems(searchTerm);  
+    public getMatchedMenuItems(searchTerm: string) {
+        return this.menuSearchService.getMatchedMenuItems(searchTerm);
     }
 
-    
+
 }
